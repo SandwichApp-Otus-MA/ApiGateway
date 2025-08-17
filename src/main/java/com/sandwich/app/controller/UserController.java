@@ -37,7 +37,6 @@ public class UserController extends ProxyController {
         or hasAnyRole(T(com.sandwich.app.rbac.UserRole).ADMIN, T(com.sandwich.app.rbac.UserRole).MANAGER)""")
     @GetMapping("/{id}")
     public ResponseEntity<byte[]> getById(@PathVariable UUID id, ProxyExchange<byte[]> proxy) {
-        var authentication = SecurityContextHolder.getContext().getAuthentication();
         return proxyGet(proxy);
     }
 
@@ -53,14 +52,17 @@ public class UserController extends ProxyController {
         return proxyPost(proxy);
     }
 
-    @PreAuthorize("hasAnyRole(T(com.sandwich.app.rbac.UserRole).ADMIN, T(com.sandwich.app.rbac.UserRole).MANAGER)")
+    // todo:
+    @PreAuthorize("""
+        @jwtUtils.isSameUser(authentication, #proxy.getRequestBody().id)
+        or hasAnyRole(T(com.sandwich.app.rbac.UserRole).ADMIN, T(com.sandwich.app.rbac.UserRole).MANAGER)""")
     @PutMapping("/edit")
     public ResponseEntity<byte[]> edit(ProxyExchange<byte[]> proxy) {
         return proxyPut(proxy);
     }
 
     @PreAuthorize("""
-        #id == authentication.principal.userId
+        @jwtUtils.isSameUser(authentication, #id)
         or hasAnyRole(T(com.sandwich.app.rbac.UserRole).ADMIN, T(com.sandwich.app.rbac.UserRole).MANAGER)""")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<byte[]> delete(@PathVariable UUID id, ProxyExchange<byte[]> proxy) {
