@@ -1,0 +1,7 @@
+spring:
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          issuer-uri: ${USER_SERVICE_URL:http://localhost:8081}
+          jwk-set-uri: ${USER_SERVICE_URL:http://localhost:8081}/oauth2/jwks
