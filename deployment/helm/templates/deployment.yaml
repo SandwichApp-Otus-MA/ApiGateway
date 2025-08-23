@@ -53,7 +53,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: {{$release}}-secret
-                  key: postgres-pswd
+                  key: {{ $val }}
           {{- end }}
 {{- end }}
       volumes:
