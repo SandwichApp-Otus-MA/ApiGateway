@@ -1,0 +1,58 @@
+# Default values for helm.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+namespace: default
+
+replicaCount: 1
+
+image:
+  repository: androcksus/api-gateway
+  pullPolicy: Always
+  tag: latest
+
+startupProbe:
+  httpGet:
+    path: actuator/health/liveness
+    port: 8080
+  periodSeconds: 10
+  failureThreshold: 60
+
+readinessProbe:
+  httpGet:
+    path: actuator/health/readiness
+    port: 8080
+  initialDelaySeconds: 15
+  periodSeconds: 30
+  failureThreshold: 3
+
+livenessProbe:
+  httpGet:
+    path: actuator/health/liveness
+    port: 8080
+  initialDelaySeconds: 30
+  periodSeconds: 30
+  failureThreshold: 3
+
+resources:
+  limits:
+    cpu: "0.5"
+    memory: "800Mi"
+  requests:
+    cpu: "0.25"
+    memory: "500Mi"
+
+service:
+  port: 8080
+  targetPort: 8080
+  type: ClusterIP
+
+ingress:
+  host: "arch.homework"
+  path: "/api-gateway/"
+  annotations:
+    nginx.org/rewrites: "serviceName=api-gateway rewrite=/"
+
+configmap:
+  USER_SERVICE_URL: "http://user-service"
+  ORDER_SERVICE_URL: "http://order-service"

@@ -9,14 +9,13 @@ import org.springframework.cloud.gateway.mvc.ProxyExchange;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -52,12 +51,11 @@ public class UserController extends ProxyController {
         return proxyPost(proxy);
     }
 
-    // todo:
     @PreAuthorize("""
-        @jwtUtils.isSameUser(authentication, #proxy.getRequestBody().id)
+        @jwtUtils.isSameUser(authentication, #body.id)
         or hasAnyRole(T(com.sandwich.app.rbac.UserRole).ADMIN, T(com.sandwich.app.rbac.UserRole).MANAGER)""")
     @PutMapping("/edit")
-    public ResponseEntity<byte[]> edit(ProxyExchange<byte[]> proxy) {
+    public ResponseEntity<byte[]> edit(@RequestBody Object body, ProxyExchange<byte[]> proxy) {
         return proxyPut(proxy);
     }
 
