@@ -8,4 +8,5 @@ public class Constants {
     public static final String AUTHORIZATION = "auth";
     public static final String USER_SERVICE_PREFIX = "/user-service";
     public static final String ORDER_SERVICE_PREFIX = "/order-service";
+    public static final String BILLING_SERVICE_PREFIX = "/billing-service";
 }

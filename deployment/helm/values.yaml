@@ -56,3 +56,4 @@ ingress:
 configmap:
   USER_SERVICE_URL: "http://user-service"
   ORDER_SERVICE_URL: "http://order-service"
+  BILLING_SERVICE_URL: "http://billing-service"

@@ -24,7 +24,7 @@ import java.util.UUID;
 
 @CrossOrigin
 @RestController
-@RequestMapping(USER_SERVICE_PREFIX + V1 + "/user")
+@RequestMapping(USER_SERVICE_PREFIX + V1)
 public class UserController extends ProxyController {
 
     public UserController(ProxyProperties properties, HttpServletRequest request) {
@@ -34,19 +34,19 @@ public class UserController extends ProxyController {
     @PreAuthorize("""
         @jwtUtils.isSameUser(authentication, #id)
         or hasAnyRole(T(com.sandwich.app.rbac.UserRole).ADMIN, T(com.sandwich.app.rbac.UserRole).MANAGER)""")
-    @GetMapping("/{id}")
+    @GetMapping("/user/{id}")
     public ResponseEntity<byte[]> getById(@PathVariable UUID id, ProxyExchange<byte[]> proxy) {
         return proxyGet(proxy);
     }
 
     @PreAuthorize("hasAnyRole(T(com.sandwich.app.rbac.UserRole).ADMIN, T(com.sandwich.app.rbac.UserRole).MANAGER)")
-    @GetMapping("/search")
+    @GetMapping("/user/search")
     public ResponseEntity<byte[]> getAll(ProxyExchange<byte[]> proxy) {
         return proxyGet(proxy);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/create")
+    @PostMapping("/user/create")
     public ResponseEntity<byte[]> create(ProxyExchange<byte[]> proxy) {
         return proxyPost(proxy);
     }
@@ -54,7 +54,7 @@ public class UserController extends ProxyController {
     @PreAuthorize("""
         @jwtUtils.isSameUser(authentication, #body.id)
         or hasAnyRole(T(com.sandwich.app.rbac.UserRole).ADMIN, T(com.sandwich.app.rbac.UserRole).MANAGER)""")
-    @PutMapping("/edit")
+    @PutMapping("/user/edit")
     public ResponseEntity<byte[]> edit(@RequestBody Object body, ProxyExchange<byte[]> proxy) {
         return proxyPut(proxy);
     }
@@ -62,7 +62,7 @@ public class UserController extends ProxyController {
     @PreAuthorize("""
         @jwtUtils.isSameUser(authentication, #id)
         or hasAnyRole(T(com.sandwich.app.rbac.UserRole).ADMIN, T(com.sandwich.app.rbac.UserRole).MANAGER)""")
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/user/delete/{id}")
     public ResponseEntity<byte[]> delete(@PathVariable UUID id, ProxyExchange<byte[]> proxy) {
         return proxyDelete(proxy);
     }

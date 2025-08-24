@@ -2,3 +2,4 @@ api-gateway:
   proxy:
     user-service-url: ${USER_SERVICE_URL:http://localhost:8081}
     order-service-url: ${ORDER_SERVICE_URL:http://localhost:8082}
+    billing-service-url: ${BILLING_SERVICE_URL:http://localhost:8083}
