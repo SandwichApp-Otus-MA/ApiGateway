@@ -3,3 +3,4 @@ api-gateway:
     user-service-url: ${USER_SERVICE_URL:http://localhost:8081}
     order-service-url: ${ORDER_SERVICE_URL:http://localhost:8082}
     billing-service-url: ${BILLING_SERVICE_URL:http://localhost:8083}
+    notificator-url: ${NOTIFICATOR_URL:http://localhost:8084}
