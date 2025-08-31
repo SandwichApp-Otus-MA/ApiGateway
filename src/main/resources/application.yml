@@ -15,7 +15,7 @@ spring:
           sensitive: content-length
 
 server:
-  port: 8085
+  port: 8080
 
 logging:
   level:
