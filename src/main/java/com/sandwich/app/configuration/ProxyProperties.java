@@ -12,4 +12,5 @@ public class ProxyProperties {
     private String orderServiceUrl;
     private String billingServiceUrl;
     private String notificatorUrl;
+    private String deliveryUrl;
 }
