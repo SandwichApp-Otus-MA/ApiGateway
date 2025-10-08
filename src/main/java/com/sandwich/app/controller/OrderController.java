@@ -28,9 +28,7 @@ public class OrderController extends ProxyController {
         super(ORDER_SERVICE_PREFIX, properties.getOrderServiceUrl(), request);
     }
 
-    @PreAuthorize("""
-        @jwtUtils.isSameUser(authentication, #id)
-        or hasAnyRole(T(com.sandwich.app.rbac.UserRole).ADMIN, T(com.sandwich.app.rbac.UserRole).MANAGER)""")
+    @PreAuthorize("isAuthenticated")
     @GetMapping("/order/{id}")
     public ResponseEntity<byte[]> getById(@PathVariable UUID id, ProxyExchange<byte[]> proxy) {
         return proxyGet(proxy);

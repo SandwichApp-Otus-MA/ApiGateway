@@ -1,7 +1,7 @@
 api-gateway:
   proxy:
-    user-service-url: ${USER_SERVICE_URL:http://localhost:8081}
-    order-service-url: ${ORDER_SERVICE_URL:http://localhost:8082}
-    billing-service-url: ${BILLING_SERVICE_URL:http://localhost:8083}
-    notificator-url: ${NOTIFICATOR_URL:http://localhost:8084}
-    delivery-url: ${DELIVERY_URL:http://localhost:8085}
+    user-service-url: ${USER_SERVICE_URL:http://localhost:8084}
+    order-service-url: ${ORDER_SERVICE_URL:http://localhost:8080}
+    billing-service-url: ${BILLING_SERVICE_URL:http://localhost:8081}
+    notificator-url: ${NOTIFICATOR_URL:http://localhost:8086}
+    delivery-url: ${DELIVERY_URL:http://localhost:8082}
