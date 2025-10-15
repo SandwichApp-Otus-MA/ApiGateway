@@ -58,3 +58,4 @@ configmap:
   ORDER_SERVICE_URL: "http://order-service"
   BILLING_SERVICE_URL: "http://billing-service"
   NOTIFICATOR_URL: "http://notificator"
+  SERVER_PORT: 8080
