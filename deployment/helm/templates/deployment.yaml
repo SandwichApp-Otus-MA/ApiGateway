@@ -4,16 +4,14 @@ metadata:
   name: {{ .Release.Name }}
   namespace: {{ .Values.namespace }}
   labels:
-    name: {{ .Release.Name }}
     app: {{ .Release.Name }}
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: {{ .Release.Name }}
   template:
     metadata:
-      name: {{ .Release.Name }}
       annotations:
         checksum/config: {{ include "propertiesHash" . }}
         app_version: "{{ .Chart.AppVersion }}"
@@ -22,9 +20,11 @@ spec:
     spec:
       restartPolicy: Always
       containers:
-        - name: {{ .Release.Name }}
+        - name: api-gateway
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 8080
           volumeMounts:
             - mountPath: /dumps
               name: heap-dumps

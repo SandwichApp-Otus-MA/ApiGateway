@@ -4,8 +4,7 @@ metadata:
   name: {{ .Release.Name }}
   namespace: {{ .Values.namespace }}
   labels:
-    name: {{ .Release.Name }}
-    app: {{ .Release.Name }}
+    app: api-gateway
 spec:
   type: {{ .Values.service.type }}
   ports:

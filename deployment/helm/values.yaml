@@ -52,10 +52,11 @@ ingress:
   path: "/api-gateway/"
   annotations:
     nginx.org/rewrites: "serviceName=api-gateway rewrite=/"
+    nginx.ingress.kubernetes.io/rewrite-target: /
 
 configmap:
-  USER_SERVICE_URL: "http://user-service"
-  ORDER_SERVICE_URL: "http://order-service"
-  BILLING_SERVICE_URL: "http://billing-service"
-  NOTIFICATOR_URL: "http://notificator"
+  USER_SERVICE_URL: "http://user-service:8080"
+  ORDER_SERVICE_URL: "http://order-service:8080"
+  BILLING_SERVICE_URL: "http://billing-service:8080"
+  NOTIFICATOR_URL: "http://notificator:8080"
   SERVER_PORT: 8080
