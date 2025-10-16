@@ -59,5 +59,6 @@ configmap:
   ORDER_SERVICE_URL: "http://order-service:8080"
   BILLING_SERVICE_URL: "http://billing-service:8080"
   NOTIFICATOR_URL: "http://notificator:8080"
-  RESTAURANT_URL: "http://restaurant:8080"
+  DELIVERY_URL: "http://delivery-service:8080"
+  RESTAURANT_URL: "http://restaurant-service:8080"
   SERVER_PORT: 8080
