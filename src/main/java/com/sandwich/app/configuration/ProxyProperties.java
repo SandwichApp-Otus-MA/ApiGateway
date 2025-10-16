@@ -13,4 +13,5 @@ public class ProxyProperties {
     private String billingServiceUrl;
     private String notificatorUrl;
     private String deliveryUrl;
+    private String restaurantUrl;
 }

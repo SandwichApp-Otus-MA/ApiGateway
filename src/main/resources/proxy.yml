@@ -5,3 +5,4 @@ api-gateway:
     billing-service-url: ${BILLING_SERVICE_URL:http://localhost:8081}
     notificator-url: ${NOTIFICATOR_URL:http://localhost:8086}
     delivery-url: ${DELIVERY_URL:http://localhost:8082}
+    restaurant-url: ${RESTAURANT_URL:http://localhost:8087}

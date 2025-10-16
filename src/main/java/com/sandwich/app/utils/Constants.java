@@ -10,5 +10,6 @@ public class Constants {
     public static final String ORDER_SERVICE_PREFIX = "/order-service";
     public static final String BILLING_SERVICE_PREFIX = "/billing-service";
     public static final String NOTIFICATOR_PREFIX = "/notificator";
-    public static final String DELIVERY_PREFIX = "/delivery";
+    public static final String DELIVERY_PREFIX = "/delivery-service";
+    public static final String RESTAURANT_PREFIX = "/restaurant-service";
 }
